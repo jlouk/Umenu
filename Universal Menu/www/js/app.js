@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('todo', ['ionic'])
+angular.module('Universal Menu', ['ionic'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -23,7 +23,7 @@ angular.module('todo', ['ionic'])
   });
 })
 
-.controller('TodoCtrl', function($scope) {
+.controller('BarCtrl', function($scope) {
   $scope.bars = [
     { title: 'State Street Brats',
       menu: "template/brats.html" },
