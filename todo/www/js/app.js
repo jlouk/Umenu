@@ -25,8 +25,11 @@ angular.module('todo', ['ionic'])
 
 .controller('TodoCtrl', function($scope) {
   $scope.bars = [
-    { title: 'State Street Brats' },
-    { title: "Chaser's" },
-    { title: 'Nitty Gritty' }
+    { title: 'State Street Brats',
+      menu: "template/brats.html" },
+    { title: "Chaser's",
+      menu: "template/chasers.html" },
+    { title: 'Nitty Gritty',
+      menu: "template/nitty.html" }
   ];
 })

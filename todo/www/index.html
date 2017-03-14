@@ -24,7 +24,9 @@
         <ion-content>
           <ion-list ng-controller="TodoCtrl">
             <ion-item ng-repeat="bar in bars">
+              <a href={{bar.menu}}>
               <button class="button button-block button-assertive">{{bar.title}}</button>
+              </a>
             </ion-item>
           </ion-list>
         </ion-content>
