@@ -22,3 +22,11 @@ angular.module('todo', ['ionic'])
     }
   });
 })
+
+.controller('TodoCtrl', function($scope) {
+  $scope.bars = [
+    { title: 'State Street Brats' },
+    { title: "Chaser's" },
+    { title: 'Nitty Gritty' }
+  ];
+})
