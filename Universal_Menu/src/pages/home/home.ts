@@ -1,6 +1,8 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
+import {Observable} from 'rxjs/Rx'; 
+import 'rxjs/add/operator/map';
  
 declare var google;
  

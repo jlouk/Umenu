@@ -10,9 +10,9 @@
 
 <ion-content padding>
   <ion-list>
-    <button ion-item *ngFor="let bar of bars" (click)="barTapped($event, bar)">
-      <ion-icon name="{{bar.icon}}" item-left></ion-icon>
-      {{bar.name}}
+    <button ion-item *ngFor="let restaurant of restaurants" (click)="restaurantTapped($event, restaurant)">
+      <ion-icon name="beer" item-left></ion-icon>
+      {{restaurant.restaurantName}}
     </button>
   </ion-list>
 

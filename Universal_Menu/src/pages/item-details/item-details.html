@@ -1,18 +1,18 @@
 <ion-header>
   <ion-navbar>
-    <button menuToggle *ngIf="!selectedBar">
+    <button menuToggle *ngIf="!selectedRestaurant">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>{{selectedBar.name}}</ion-title>
+    <ion-title>{{selectedRestaurant.name}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <h3 text-center *ngIf="selectedBar">
-    {{selectedBar.name}}
-    <ion-icon [name]="selectedBar.icon"></ion-icon>
+  <h3 text-center *ngIf="selectedRestaurant">
+    {{selectedRestaurant.restaurantName}}
+    <ion-icon [name]="beer"></ion-icon>
   </h3>
-  <div text-center *ngIf="selectedBar.id == 1">
+  <div text-center *ngIf="selectedRestaurant.restaurantId == 1">
       <li class="menu-items">
           <div class="h6 item-main">
               <span class="item-title">Sassy Sauced Curds</span>
@@ -367,7 +367,7 @@
           <p class="description"></p>
       </li><br>
   </div>
-  <div text-center *ngIf="selectedBar.id == 2">
+  <div text-center *ngIf="selectedRestaurant.restaurantId == 2">
     <li class="menu-items">
           <div class="h6 item-main">
               <span class="item-title">$1 off All Appetizers &amp; Sandwiches</span>
