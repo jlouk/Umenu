@@ -20,6 +20,7 @@ coverage/
 dist/
 tmp/
 temp/
+/node_modules
 plugins/android.json
 plugins/ios.json
 $RECYCLE.BIN/
