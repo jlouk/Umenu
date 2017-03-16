@@ -11,6 +11,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 export class ItemDetailsPage {
   selectedRestaurant: any;
   menus: any;
+  dataString: any;
   hasError: boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
@@ -52,7 +53,13 @@ export class ItemDetailsPage {
          // If the request was successful notify the user
          if(data.status === 200)
          {
-           this.menus = data;
+           this.dataString = data;
+           this.menus = JSON.parse(this.dataString._body);
+           console.log(this.menus);
+           console.log(this.menus.url);
+           console.log(this.menus._body);
+           
+           
          }
          // Otherwise let 'em know anyway
          else
