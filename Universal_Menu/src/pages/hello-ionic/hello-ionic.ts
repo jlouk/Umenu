@@ -23,7 +23,7 @@ restaurants: any;
       restaurant: restaurant
     });
   }
-/*
+
   ngOnInit() {
     this.load();
   }
@@ -41,6 +41,6 @@ restaurants: any;
       this.restaurants = data;
     });
   }
-*/
+
 }
 
