@@ -1,8 +1,10 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
 import {Observable} from 'rxjs/Rx'; 
 import 'rxjs/add/operator/map';
+import { Http, Headers, RequestOptions } from '@angular/http';
+
  
 declare var google;
  
@@ -14,14 +16,30 @@ export class HomePage {
  
   @ViewChild('map') mapElement: ElementRef;
   map: any;
+  restaurants: Array<{restaurantId: number, restaurantName: string, latitude: string, longitude: string}>;
  
-  constructor(public navCtrl: NavController) {
- 
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
   }
- 
- 
-  ionViewDidLoad(){
+
+
+  ngOnInit() {
+    this.load();
     this.loadMap();
+  }
+
+  load() {
+    let type 	 : string	 = "application/x-www-form-urlencoded; charset=UTF-8",
+        headers: any		 = new Headers({ 'Content-Type': type}),
+        options: any 		 = new RequestOptions({ headers: headers }),
+        url 	 : any		 = "http://s673534317.onlinehome.us/scripts/restaurants.php";
+
+    this.http.get(url, options)
+    .map(res => res.json())
+    .subscribe(data =>
+    {
+      this.restaurants = data;
+    });
+
   }
  
   loadMap(){
@@ -44,18 +62,20 @@ export class HomePage {
  
   }
 
-  addMarker(){
- 
-    let marker = new google.maps.Marker({
-      map: this.map,
-      animation: google.maps.Animation.DROP,
-      position: this.map.getCenter()
-    });
- 
-    let content = "<h4>Information!</h4>";          
- 
-    this.addInfoWindow(marker, content);
- 
+  addMarkers(){
+    
+    for (let r of this.restaurants) {
+      let latLng = new google.maps.LatLng(r.latitude, r.longitude);
+      let marker = new google.maps.Marker({
+        map: this.map,
+        animation: google.maps.Animation.DROP,
+        position: latLng
+      });
+  
+      let content = "<h4>" + r.restaurantName + "</h4>";          
+  
+      this.addInfoWindow(marker, content);
+    }
   }
 
   addInfoWindow(marker, content){
