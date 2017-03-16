@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Universal Menu</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-buttons end>
+    <button ion-button (click)="addMarker()"><ion-icon name="add"></ion-icon>Add Marker</button>
+  </ion-buttons>
+  <div #map id="map"></div>  
+</ion-content>
