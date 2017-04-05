@@ -16,18 +16,40 @@ export class HomePage {
  
   @ViewChild('map') mapElement: ElementRef;
   map: any;
-  restaurants: Array<{restaurantId: number, restaurantName: string, latitude: string, longitude: string}>;
- 
+  //restaurants: Array<{restaurantId: number, restaurantName: string, latitude: string, longitude: string}>;
+  restaurants: any;
+  lat: any;
+  lon: any;
+  dist: any;
+  postdata: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
   }
 
 
   ngOnInit() {
-    this.load();
     this.loadMap();
   }
 
   load() {
+    this.restaurants = [];
+
+    this.dist = "5";
+    this.postdata = {'lat': this.lat, 'lon': this.lon, 'dist': this.dist};
+    let body   : string  = JSON.stringify(this.postdata),
+        type   : string  = "application/x-www-form-urlencoded; charset=UTF-8",
+        headers: any     = new Headers({ 'Content-Type':'application/json'}),
+        options: any     = new RequestOptions({ headers: headers }),
+        url    : any     = "http://s673534317.onlinehome.us/scripts/restaurants.php";
+
+    this.http.post(url, body, options)
+    .map(res => res.json())
+    .subscribe(data =>
+    {
+      this.restaurants = data;
+      this.addMarkers();
+    });
+    /*
     let type 	 : string	 = "application/x-www-form-urlencoded; charset=UTF-8",
         headers: any		 = new Headers({ 'Content-Type': type}),
         options: any 		 = new RequestOptions({ headers: headers }),
@@ -39,6 +61,7 @@ export class HomePage {
     {
       this.restaurants = data;
     });
+    */
 
   }
  
@@ -47,6 +70,8 @@ export class HomePage {
     Geolocation.getCurrentPosition().then((position) => {
  
       let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      this.lat = position.coords.latitude;
+      this.lon = position.coords.longitude;
  
       let mapOptions = {
         center: latLng,
@@ -55,6 +80,7 @@ export class HomePage {
       }
  
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+      this.load();
  
     }, (err) => {
       console.log(err);

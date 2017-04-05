@@ -3,6 +3,10 @@ import { NavController, NavParams } from 'ionic-angular';
 import { ItemDetailsPage } from '../item-details/item-details';
 import { HomePage } from '../home/home';
 import { Http, Headers, RequestOptions } from '@angular/http';
+import { ManagerLoginPage } from '../manager-login/manager-login';
+import { Geolocation } from 'ionic-native';
+import {Observable} from 'rxjs/Rx'; 
+import 'rxjs/add/operator/map';
 
 
 @Component({
@@ -12,10 +16,14 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 export class HelloIonicPage {
 selectedRestaurant: any;
 restaurants: any;
+lat: any;
+lon: any;
+dist: string;
+postdata: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
     this.selectedRestaurant = navParams.get('restaurant');
-    this.restaurants = [{"restaurantId":"1","restaurantName":"State Street Brats","latitude":"43.0747","longitude":"-89.396"}];
+    this.restaurants = [];
   }
 
   restaurantTapped(event, restaurant) {
@@ -25,11 +33,27 @@ restaurants: any;
   }
 
   ngOnInit() {
-    this.load();
+    this.getLocation();
   }
 
   load() {
-      let type 	 : string	 = "application/x-www-form-urlencoded; charset=UTF-8",
+    
+    this.dist = "5";
+    this.postdata = {'lat': this.lat, 'lon': this.lon, 'dist': this.dist};
+    let body   : string  = JSON.stringify(this.postdata),
+        type   : string  = "application/x-www-form-urlencoded; charset=UTF-8",
+        headers: any     = new Headers({ 'Content-Type':'application/json'}),
+        options: any     = new RequestOptions({ headers: headers }),
+        url    : any     = "http://s673534317.onlinehome.us/scripts/restaurants.php";
+
+    this.http.post(url, body, options)
+    .map(res => res.json())
+    .subscribe(data =>
+    {
+      this.restaurants = data;
+    });
+  
+  /*    let type 	 : string	 = "application/x-www-form-urlencoded; charset=UTF-8",
         headers: any		 = new Headers({ 'Content-Type': type}),
         options: any 		 = new RequestOptions({ headers: headers }),
         url 	 : any		 = "http://s673534317.onlinehome.us/scripts/restaurants.php";
@@ -39,8 +63,27 @@ restaurants: any;
     .subscribe(data =>
     {
       this.restaurants = data;
-    });
+    });*/
   }
+
+  manLogin() {
+    this.navCtrl.push(ManagerLoginPage);
+  }
+
+  getLocation(){
+ 
+    Geolocation.getCurrentPosition().then((position) => {
+ 
+      this.lat = position.coords.latitude;
+      this.lon = position.coords.longitude;
+      this.load();
+ 
+    }, (err) => {
+      console.log(err);
+    });
+ 
+  }
+
 
 }
 
