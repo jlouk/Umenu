@@ -22,7 +22,6 @@ dist: string;
 postdata: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
-    this.selectedRestaurant = navParams.get('restaurant');
     this.restaurants = [];
   }
 

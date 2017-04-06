@@ -29,8 +29,8 @@ export class ManagerMenuPage {
   }
 
   loadCategories() {
-      /*
-    this.postdata.restaurantId = this.restaurant.restaurantId;
+      
+    this.postdata.restaurantId = this.loggedInUser.restaurantId;
     let body   : string	 = JSON.stringify(this.postdata),
           type 	 : string	 = "application/x-www-form-urlencoded; charset=UTF-8",
           headers: any		 = new Headers({ 'Content-Type': 'application/json'}),
@@ -54,13 +54,13 @@ export class ManagerMenuPage {
           this.hasError = true;
          }
       });
-      */
+      
   }
 
 
   loadDishes() {
-      /*
-      this.postdata.restaurantId = this.restaurant.restaurantId;
+      
+      this.postdata.restaurantId = this.loggedInUser.restaurantId;
       let body   : string	 = JSON.stringify(this.postdata),
           type 	 : string	 = "application/x-www-form-urlencoded; charset=UTF-8",
           headers: any		 = new Headers({ 'Content-Type': 'application/json'}),
@@ -84,7 +84,7 @@ export class ManagerMenuPage {
           this.hasError = true;
          }
       });
-      */
+      
    }
    
 }

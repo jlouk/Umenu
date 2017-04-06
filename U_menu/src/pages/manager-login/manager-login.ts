@@ -46,11 +46,10 @@ export class ManagerLoginPage {
       .subscribe((data) =>
       {
          // If the request was successful notify the user
-         if(data.status === 200)
+         if(data != [])
          {
-           this.dataString = data;
+           this.user = data;
            this.failedLogin = false;
-           this.user = JSON.parse(this.dataString._body);
            this.auth.login(this.registerCredentials).subscribe(allowed => {
               if (allowed) {
                 this.failedLogin = false;
