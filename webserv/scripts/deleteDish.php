@@ -18,6 +18,4 @@ if ($user['manager']){
     $query = "DELETE FROM dishes WHERE dishId = $dishId;";
     mysqli_query($db, $query);
 }
-
-
 ?>
