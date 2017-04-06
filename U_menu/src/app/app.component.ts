@@ -14,7 +14,6 @@ export class MyApp {
   // make HelloIonicPage the root (or first) page
   rootPage: any = HelloIonicPage;
   pages: Array<{title: string, component: any}>;
-  user: {userId: number, userType: number, username: string, restaurant: any};
 
   constructor(
     public platform: Platform,
@@ -43,9 +42,5 @@ export class MyApp {
     this.menu.close();
     // navigate to the new page if it is not the current page
     this.nav.setRoot(page.component);
-  }
-
-  userLogin(user){
-    this.user = user;
   }
 }

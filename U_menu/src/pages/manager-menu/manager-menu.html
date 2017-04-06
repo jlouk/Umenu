@@ -8,5 +8,19 @@
 </ion-header>
 
 <ion-content padding>
-  <h2> Manager stuff </h2>
+  <h2> Manager: {{user.username}}</h2>
+  <!--
+  <ion-list>
+    <div ion-item *ngFor="let category of categories">
+      {{category.categoryName}}
+      <ion-list>
+        <div *ngFor="let dish of dishes">
+            <div ion-item *ngIf="dish.categoryId == category.categoryId">
+              ${{dish.price}} {{dish.dishName}}
+            </div>
+        </div>
+      </ion-list>
+    </div>
+  </ion-list>
+  <!-->
 </ion-content>

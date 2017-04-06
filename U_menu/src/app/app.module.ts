@@ -6,6 +6,8 @@ import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ManagerLoginPage } from '../pages/manager-login/manager-login';
 import { ManagerMenuPage } from '../pages/manager-menu/manager-menu';
 import { HomePage } from '../pages/home/home';
+import { AuthService } from '../providers/auth-service';
+
 
 @NgModule({
   declarations: [
@@ -28,6 +30,6 @@ import { HomePage } from '../pages/home/home';
     ManagerMenuPage,
     HomePage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [AuthService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}
