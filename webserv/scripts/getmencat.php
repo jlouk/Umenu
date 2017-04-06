@@ -10,24 +10,26 @@ include("../incl/config-inc.php");
 header('Content-Type: application/json');
 
 $restaurantId = $_POST['restaurantId'];
+$results = restaurantQuery($restaurantId);
+echo $results;
 
-$qry = "SELECT * FROM `menu_categories` WHERE `restaurantId` = " . $restaurantId;
-$result = mysqli_query($db,$qry);
-$count = mysqli_num_rows($result);
-$arr = array();
 
-for($i=0; $i<$count; $i++)
+function restaurantQuery($restaurantId)
 {
-	$row = mysqli_fetch_array($result);
-	$rowarr = array();
-	$rowarr['categoryId'] = $row['categoryId'];
-	$rowarr['categoryName'] = $row['categoryName'];
-	$rowarr['restaurantId'] = $row['restaurantId'];
-	array_push($arr,$rowarr);
+    $qry = "SELECT * FROM `menu_categories` WHERE `restaurantId` = " . $restaurantId;
+    $result = mysqli_query($db, $qry);
+    $count = mysqli_num_rows($result);
+    $arr = array();
+
+    for ($i = 0; $i < $count; $i++) {
+        $row = mysqli_fetch_array($result);
+        $rowarr = array();
+        $rowarr['categoryId'] = $row['categoryId'];
+        $rowarr['categoryName'] = $row['categoryName'];
+        $rowarr['restaurantId'] = $row['restaurantId'];
+        array_push($arr, $rowarr);
+    }
+    mysqli_close($db);
+    return (json_encode($arr));
 }
-
-echo(json_encode($arr));
-
-mysqli_close($db);
-
 ?>
