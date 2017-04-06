@@ -9,9 +9,12 @@
 
 <ion-content padding>
   <h2> Manager: {{user.username}}</h2>
-  <button ion-button icon-right round outline>
+  <button ion-button icon-right round outline (click)="addDish()">
     Add New Dish 
     <ion-icon name="add" large></ion-icon>
+  </button>
+  <button ion-button icon-center round (click)="refreshPage()">
+    <ion-icon name="refresh" large></ion-icon>
   </button>
   <ion-list>
     <div ion-item *ngFor="let category of categories">

@@ -95,8 +95,23 @@ export class ManagerMenuPage {
   editDish(dishToEdit) {
     this.editData = dishToEdit;
     this.navCtrl.push(ManagerDishDetails, {
-      dish: this.editData
+      dish: this.editData,
+      user: this.loggedInUser
     });
+  }
+
+  addDish() {
+    this.editData = {userId: this.loggedInUser[0].userId, dishId: -1, description: "", restaurantId: this.loggedInUser[0].restaurantId,
+                     categoryId: -1, dishName: "", price: 0};
+    this.navCtrl.push(ManagerDishDetails, {
+      dish: this.editData,
+      user: this.loggedInUser
+    });
+  }
+
+  refreshPage() {
+    this.loadCategories();
+    this.loadDishes();
   }
    
 }

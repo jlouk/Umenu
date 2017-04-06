@@ -8,7 +8,33 @@
 </ion-header>
 
 <ion-content padding>
-  <h2> Dish: {{dish.dishName}}</h2>
-  //userId, categoryId, restaurantId, dishName, description, price
-  
+  <ion-item>
+    <ion-label>Dish</ion-label>
+    <ion-input [(ngModel)]="dish.dishName" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>description</ion-label>
+    <ion-input [(ngModel)]="dish.description" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>price</ion-label>
+    <ion-input [(ngModel)]="dish.price" type="text"></ion-input>
+  </ion-item>
+
+  <ion-list radio-group [(ngModel)]="dish.categoryId">
+    <ion-list-header>
+        Category
+    </ion-list-header>
+    <div *ngFor="let category of categories">
+      <ion-item>
+        <ion-label>{{category.categoryName}}</ion-label>
+        <ion-radio value="{{category.categoryId}}"></ion-radio>
+      </ion-item>
+    </div>
+  </ion-list>
+  <button ion-button color="default" full (click)="submitData()">Submit</button>
+
+  <!-- userId, categoryId, restaurantId, dishName, description, price<!-->
+
+
 </ion-content>
