@@ -7,6 +7,7 @@
  */
 include("../incl/config-inc.php");
 header('Content-Type: application/json');
+$_POST = json_decode(file_get_contents('php://input'), true);
 
 $userId = $_POST['userId'];
 $dishId = $_POST['dishId'];
@@ -18,4 +19,5 @@ if ($user['manager']){
     $query = "DELETE FROM dishes WHERE dishId = $dishId;";
     mysqli_query($db, $query);
 }
+
 ?>
