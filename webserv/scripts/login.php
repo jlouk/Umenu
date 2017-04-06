@@ -16,19 +16,21 @@ $password = $_POST['password'];
 $query = "SELECT * FROM `users` WHERE email = \"".$email."\" AND password = \"".$password."\";";
 $result = mysqli_query($db, $query);
 $arr = array();
-
-while ($row = mysqli_fetch_array($result)){
+if ($row = mysqli_fetch_array($result)){
     $rowarr = array();
     $rowarr['userId'] = $row['userId'];
     $rowarr['email'] = $row['email'];
-    $rowarr['password'] = $row['password'];
     $rowarr['notifications'] = $row['notifications'];
     $rowarr['manager'] = $row['manager'];
     $rowarr['restaurantId'] = $row['restaurantId'];
-    array_push($arr,$rowarr);
-}
 
-echo(json_encode($arr));
+    array_push($arr,$rowarr);
+    $arr['valid'] = 1;
+}
+else {
+    $arr['valid'] = 0;
+}
+echo json_encode($arr);
 mysqli_close($db);
 
 ?>
