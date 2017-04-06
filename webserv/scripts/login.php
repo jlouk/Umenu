@@ -12,17 +12,13 @@ header('Content-Type: application/json');
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-$query = "SELECT * FROM `users` WHERE username = ". $username . "AND password = " . $password";";
+$query = "SELECT * FROM `users` WHERE username =  $username AND password = $passwordd;";
 
-$result  mysqli_query($db, $query);
-$count = mysqli_num_rows($result);
+$result = mysqli_query($db, $query);
 $arr = array();
 
-while ($row  mysqli_fetch_array($result)){
-    $rowarr = array();
-    $rowarr['username'] = $row['username'];
-    $rowarr['password'] = $row['password'];
-    $rowarr['isAdmin'] = $row['isAdmin'];
+while ($row = mysqli_fetch_array($result)){
+    array_push($arr,$row);
 }
 
 echo(json_encode($arr));
