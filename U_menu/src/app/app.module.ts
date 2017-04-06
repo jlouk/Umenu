@@ -6,6 +6,7 @@ import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ManagerLoginPage } from '../pages/manager-login/manager-login';
 import { ManagerMenuPage } from '../pages/manager-menu/manager-menu';
 import { HomePage } from '../pages/home/home';
+import { ManagerDishDetails } from '../pages/manager-dishdetails/manager-dishdetails';
 import { AuthService } from '../providers/auth-service';
 
 
@@ -16,6 +17,7 @@ import { AuthService } from '../providers/auth-service';
     ItemDetailsPage,
     ManagerLoginPage,
     ManagerMenuPage,
+    ManagerDishDetails,
     HomePage
   ],
   imports: [
@@ -28,6 +30,7 @@ import { AuthService } from '../providers/auth-service';
     ItemDetailsPage,
     ManagerLoginPage,
     ManagerMenuPage,
+    ManagerDishDetails,
     HomePage
   ],
   providers: [AuthService, {provide: ErrorHandler, useClass: IonicErrorHandler}]

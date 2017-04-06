@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { AuthService } from '../../providers/auth-service';
+import { ManagerDishDetails } from '../manager-dishdetails/manager-dishdetails';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class ManagerMenuPage {
   hasError: boolean;
   restaurant: any;
   loggedInUser: any;
+  editData: any;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http,  private auth: AuthService) {
@@ -89,5 +91,12 @@ export class ManagerMenuPage {
       });
       
    }
+   
+  editDish(dishToEdit) {
+    this.editData = dishToEdit;
+    this.navCtrl.push(ManagerDishDetails, {
+      dish: this.editData
+    });
+  }
    
 }

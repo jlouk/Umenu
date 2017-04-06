@@ -46,7 +46,7 @@ export class ManagerLoginPage {
       .subscribe((data) =>
       {
          // If the request was successful notify the user
-         if(data != [])
+         if(data.valid == 1)
          {
            this.user = data;
            this.failedLogin = false;
