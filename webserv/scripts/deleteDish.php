@@ -8,7 +8,7 @@
 include("../incl/config-inc.php");
 header('Content-Type: application/json');
 
-$userId = $_POST['username'];
+$userId = $_POST['userId'];
 $dishId = $_POST['dishId'];
 
 $query = "SELECT * FROM `users` WHERE userId = ".$userId.";";

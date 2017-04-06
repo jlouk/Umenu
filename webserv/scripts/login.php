@@ -9,10 +9,10 @@
 include("../incl/config-inc.php");
 header('Content-Type: application/json');
 
-$username = $_POST['username'];
+$email = $_POST['email'];
 $password = $_POST['password'];
 
-$query = "SELECT * FROM `users` WHERE username =  $username AND password = $password;";
+$query = "SELECT * FROM `users` WHERE email = ".$email." AND password = ".$password.";";
 
 $result = mysqli_query($db, $query);
 $arr = array();

@@ -9,7 +9,7 @@
 include("../incl/config-inc.php");
 header('Content-Type: application/json');
 
-$userId = $_POST['username'];
+$userId = $_POST['userId'];
 
 $dishId = $_POST['dishId'];
 $categoryId = $_POST['categoryId'];
