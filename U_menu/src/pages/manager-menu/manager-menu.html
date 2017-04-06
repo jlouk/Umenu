@@ -9,6 +9,10 @@
 
 <ion-content padding>
   <h2> Manager: {{user.username}}</h2>
+  <button ion-button icon-right round outline>
+    Add New Dish 
+    <ion-icon name="add" large></ion-icon>
+  </button>
   <ion-list>
     <div ion-item *ngFor="let category of categories">
       {{category.categoryName}}
@@ -16,6 +20,8 @@
         <div *ngFor="let dish of dishes">
             <div ion-item *ngIf="dish.categoryId == category.categoryId">
               ${{dish.price}} {{dish.dishName}}
+              <ion-icon name="hammer" item-left></ion-icon>
+              <ion-icon name="trash" item-right></ion-icon>
             </div>
         </div>
       </ion-list>

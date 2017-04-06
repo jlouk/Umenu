@@ -10,7 +10,7 @@ import { AuthService } from '../../providers/auth-service';
 })
 export class ManagerMenuPage {
   user: {username: string};
-  postdata: {restaurantId : number};
+  postdata: any;
   dataString: any;
   categories: any;
   dishes: any;
@@ -22,15 +22,18 @@ export class ManagerMenuPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http,  private auth: AuthService) {
     // If we navigated to this page, we will have an item available as a nav param
     this.loggedInUser = navParams.get('user');
+    this.postdata = {restaurantId: -1};
+    this.user = this.auth.getUserInfo();
   }
 
   ngOnInit() {
-    this.user = this.auth.getUserInfo();
+    this.loadCategories();
+    this.loadDishes();
   }
 
   loadCategories() {
       
-    this.postdata.restaurantId = this.loggedInUser.restaurantId;
+    this.postdata.restaurantId =  this.loggedInUser[0].restaurantId;
     let body   : string	 = JSON.stringify(this.postdata),
           type 	 : string	 = "application/x-www-form-urlencoded; charset=UTF-8",
           headers: any		 = new Headers({ 'Content-Type': 'application/json'}),
@@ -60,7 +63,7 @@ export class ManagerMenuPage {
 
   loadDishes() {
       
-      this.postdata.restaurantId = this.loggedInUser.restaurantId;
+      this.postdata.restaurantId = this.loggedInUser[0].restaurantId;
       let body   : string	 = JSON.stringify(this.postdata),
           type 	 : string	 = "application/x-www-form-urlencoded; charset=UTF-8",
           headers: any		 = new Headers({ 'Content-Type': 'application/json'}),
