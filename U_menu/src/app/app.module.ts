@@ -4,6 +4,7 @@ import { MyApp } from './app.component';
 import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ManagerLoginPage } from '../pages/manager-login/manager-login';
+import { ManagerMenuPage } from '../pages/manager-menu/manager-menu';
 import { HomePage } from '../pages/home/home';
 
 @NgModule({
@@ -12,6 +13,7 @@ import { HomePage } from '../pages/home/home';
     HelloIonicPage,
     ItemDetailsPage,
     ManagerLoginPage,
+    ManagerMenuPage,
     HomePage
   ],
   imports: [
@@ -23,6 +25,7 @@ import { HomePage } from '../pages/home/home';
     HelloIonicPage,
     ItemDetailsPage,
     ManagerLoginPage,
+    ManagerMenuPage,
     HomePage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]

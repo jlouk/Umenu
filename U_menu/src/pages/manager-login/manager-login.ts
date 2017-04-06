@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
+import { ManagerMenuPage } from "../manager-menu/manager-menu";
 
 
 
@@ -52,7 +53,7 @@ export class ManagerLoginPage {
          }
       });
       */
-
+    this.navCtrl.push(ManagerMenuPage);
   }
 
   manRegister() {

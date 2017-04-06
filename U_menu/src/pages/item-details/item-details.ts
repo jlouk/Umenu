@@ -14,10 +14,12 @@ export class ItemDetailsPage {
   categories: any;
   dataString: any;
   hasError: boolean;
+  postdata: {restaurantId : number};
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedRestaurant = navParams.get('restaurant');
+    this.postdata = {restaurantId: -1};
   }
 
   ngOnInit() {
@@ -27,9 +29,10 @@ export class ItemDetailsPage {
   }
 
   loadCategories() {
-    let body   : string	 = "restaurantId=" + this.selectedRestaurant.restaurantId,
+    this.postdata.restaurantId = this.selectedRestaurant.restaurantId;
+    let body   : string	 = JSON.stringify(this.postdata),
           type 	 : string	 = "application/x-www-form-urlencoded; charset=UTF-8",
-          headers: any		 = new Headers({ 'Content-Type': type}),
+          headers: any		 = new Headers({ 'Content-Type': 'application/json'}),
           options: any 		 = new RequestOptions({ headers: headers }),
           url 	 : any		 = "http://s673534317.onlinehome.us/scripts/getmencat.php";
 
@@ -40,6 +43,7 @@ export class ItemDetailsPage {
          if(data.status === 200)
          {
            this.dataString = data;
+           console.log(this.dataString);
            this.categories = JSON.parse(this.dataString._body);
            console.log(this.categories);
          }
@@ -53,9 +57,10 @@ export class ItemDetailsPage {
 
 
   loadDishes() {
-      let body   : string	 = "restaurantId=" + this.selectedRestaurant.restaurantId,
+      this.postdata.restaurantId = this.selectedRestaurant.restaurantId;
+      let body   : string	 = JSON.stringify(this.postdata),
           type 	 : string	 = "application/x-www-form-urlencoded; charset=UTF-8",
-          headers: any		 = new Headers({ 'Content-Type': type}),
+          headers: any		 = new Headers({ 'Content-Type': 'application/json'}),
           options: any 		 = new RequestOptions({ headers: headers }),
           url 	 : any		 = "http://s673534317.onlinehome.us/scripts/getdishes.php";
 
@@ -66,6 +71,7 @@ export class ItemDetailsPage {
          if(data.status === 200)
          {
            this.dataString = data;
+           console.log(this.dataString);
            this.dishes = JSON.parse(this.dataString._body);
            console.log(this.dishes);
          }

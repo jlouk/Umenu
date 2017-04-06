@@ -98,7 +98,7 @@ export class HomePage {
         position: latLng
       });
   
-      let content = "<h4>" + r.restaurantName + "</h4>";          
+      let content = "<h2>" + r.restaurantName + "</h2>";          
   
       this.addInfoWindow(marker, content);
     }
