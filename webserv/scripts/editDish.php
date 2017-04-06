@@ -8,7 +8,7 @@
 
 include("../incl/config-inc.php");
 header('Content-Type: application/json');
-
+$_POST = json_decode(file_get_contents('php://input'), true);
 $userId = $_POST['userId'];
 
 $dishId = $_POST['dishId'];
