@@ -11,16 +11,11 @@
   include_once('simple_html_dom.php');
   $result = dlPage("https://www.allmenus.com/wi/madison/19164-state-street-brats/menu/");
   //var_dump($result);
-
-
-
-
   function dlPage($href) {
     $html = file_get_html($href);
     $titles = [];
     $descriptions = [];
     $prices = [];
-
     $desCounter = 0;
     $titleCounter = 0;
     $priceCounter = 0;
@@ -39,16 +34,12 @@
     $titleSize =  sizeof($titles);
     $desSize =  sizeof($descriptions);
     $priceSize = sizeof($prices);
-
     if (($titleSize == $desSize) && ($desSize == $priceSize)){//they are equal then
       $host_name  = "db673534878.db.1and1.com";
       $database   = "db673534878";
       $user_name  = "dbo673534878";
       $password   = "ForHonor&Valor";
-
-
       $connect = mysqli_connect($host_name, $user_name, $password, $database);
-
       if(mysqli_connect_errno())
       {
         echo '<p>Verbindung zum MySQL Server fehlgeschlagen: '.mysqli_connect_error().'</p>';
@@ -61,10 +52,7 @@
     else{
       echo "there was an error with the page crawler!!";
     }
-
   }
-
-
   ?>
 
 </body>
