@@ -24,7 +24,7 @@
             <div ion-item *ngIf="dish.categoryId == category.categoryId">
               ${{dish.price}} {{dish.dishName}}
               <ion-icon name="hammer" item-left (click)="editDish(dish)"></ion-icon>
-              <ion-icon name="trash" item-right></ion-icon>
+              <ion-icon name="trash" item-right (click)="deleteDish(dish)"></ion-icon>
             </div>
         </div>
       </ion-list>
