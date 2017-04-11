@@ -47,7 +47,7 @@ export class ItemDetailsPage {
            this.categories = JSON.parse(this.dataString._body);
            console.log(this.categories);
            for (let category of this.categories) {
-             category.display = false;
+             category.display = true;
            }
          }
          // Otherwise let 'em know anyway

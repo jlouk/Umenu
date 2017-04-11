@@ -30,17 +30,20 @@
       </div>
       <ion-list *ngIf="category.display">
         <div *ngFor="let dish of dishes">
-            <div ion-item *ngIf="dish.categoryId == category.categoryId">
-              <ion-item-sliding>
+              <ion-item-sliding *ngIf="dish.categoryId == category.categoryId">
                 <ion-item>
-                  ${{dish.price}} {{dish.dishName}}
+                  <h2 item-left>
+                    {{dish.price | currency:'USD':true:'1.2-2'}}
+                  </h2>
+                  <h2 style="padding-left: 20px">
+                    {{dish.dishName}}
+                  </h2>
                 </ion-item>
                 <ion-item-options>
                   <button ion-button color="primary" (click)="editDish(dish)"><ion-icon large name="hammer"></ion-icon></button>
                   <button ion-button color="danger" (click)="deleteDish(dish)"><ion-icon large name="trash"></ion-icon></button>
                 </ion-item-options>
               </ion-item-sliding>
-            </div>
         </div>
       </ion-list>
     </div>

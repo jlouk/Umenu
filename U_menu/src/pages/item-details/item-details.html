@@ -23,7 +23,8 @@
       <ion-list *ngIf="category.display">
         <div *ngFor="let dish of dishes">
             <ion-item *ngIf="dish.categoryId == category.categoryId">
-              ${{dish.price}} {{dish.dishName}}
+              <h2 item-left> {{dish.price | currency:'USD':true:'1.2-2'}} </h2>
+              <h2  style="padding-left: 20px"> {{dish.dishName}} </h2>
             </ion-item>
         </div>
       </ion-list>
