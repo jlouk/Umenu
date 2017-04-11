@@ -15,9 +15,15 @@ $dishId = $_POST['dishId'];
 $query = "SELECT * FROM `users` WHERE userId = ".$userId.";";
 $result = mysqli_query($db, $query);
 $user = mysqli_fetch_assoc($result);
+$result1 = [];
 if ($user['manager']){
+    $result1['valid'] = 1;
     $query = "DELETE FROM dishes WHERE dishId = $dishId;";
     mysqli_query($db, $query);
 }
+else {
+    $result1['valid'] = 0;
+}
+echo json_encode($result1);
 
 ?>
