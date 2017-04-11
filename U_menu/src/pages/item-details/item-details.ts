@@ -11,7 +11,7 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 export class ItemDetailsPage {
   selectedRestaurant: any;
   dishes: any;
-  categories: any;
+  categories: Array<{categoryId: any, categoryName: any, restaurantId: any, display: boolean}>;
   dataString: any;
   hasError: boolean;
   postdata: {restaurantId : number};
@@ -46,6 +46,9 @@ export class ItemDetailsPage {
            console.log(this.dataString);
            this.categories = JSON.parse(this.dataString._body);
            console.log(this.categories);
+           for (let category of this.categories) {
+             category.display = false;
+           }
          }
          // Otherwise let 'em know anyway
          else
@@ -81,6 +84,14 @@ export class ItemDetailsPage {
           this.hasError = true;
          }
       });
+   }
+
+   toggleDisplay(category) {
+     if (category.display) {
+       category.display = false;
+     } else if (!category.display) {
+       category.display = true;
+     }
    }
    
 }

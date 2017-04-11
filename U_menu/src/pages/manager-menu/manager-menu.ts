@@ -15,7 +15,7 @@ export class ManagerMenuPage {
   user: {username: string};
   postdata: any;
   dataString: any;
-  categories: any;
+  categories: Array<{categoryId: any, categoryName: any, restaurantId: any, display: boolean}>;
   dishes: any;
   hasError: boolean;
   restaurant: any;
@@ -56,6 +56,9 @@ export class ManagerMenuPage {
            console.log(this.dataString);
            this.categories = JSON.parse(this.dataString._body);
            console.log(this.categories);
+           for (let category of this.categories) {
+             category.display = false;
+           }
          }
          // Otherwise let 'em know anyway
          else
@@ -142,5 +145,13 @@ export class ManagerMenuPage {
     this.loadCategories();
     this.loadDishes();
   }
+
+  toggleDisplay(category) {
+     if (category.display) {
+       category.display = false;
+     } else if (!category.display) {
+       category.display = true;
+     }
+   }
    
 }

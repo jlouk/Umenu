@@ -17,14 +17,29 @@
     <ion-icon name="refresh" large></ion-icon>
   </button>
   <ion-list>
-    <div ion-item *ngFor="let category of categories">
-      {{category.categoryName}}
-      <ion-list>
+    <div *ngFor="let category of categories">
+      <div>
+        <ion-item style="text-transform: uppercase; background-color: lightcoral;" *ngIf="category.display">
+          {{category.categoryName}}
+          <ion-icon name="remove" item-right (click)="toggleDisplay(category)"></ion-icon>
+        </ion-item>
+        <ion-item style="text-transform: uppercase; background-color: lightcoral;" *ngIf="!category.display">
+          {{category.categoryName}}
+          <ion-icon name="add" item-right (click)="toggleDisplay(category)"></ion-icon>
+        </ion-item>
+      </div>
+      <ion-list *ngIf="category.display">
         <div *ngFor="let dish of dishes">
             <div ion-item *ngIf="dish.categoryId == category.categoryId">
-              ${{dish.price}} {{dish.dishName}}
-              <ion-icon name="hammer" item-left (click)="editDish(dish)"></ion-icon>
-              <ion-icon name="trash" item-right (click)="deleteDish(dish)"></ion-icon>
+              <ion-item-sliding>
+                <ion-item>
+                  ${{dish.price}} {{dish.dishName}}
+                </ion-item>
+                <ion-item-options>
+                  <button ion-button color="primary" (click)="editDish(dish)"><ion-icon large name="hammer"></ion-icon></button>
+                  <button ion-button color="danger" (click)="deleteDish(dish)"><ion-icon large name="trash"></ion-icon></button>
+                </ion-item-options>
+              </ion-item-sliding>
             </div>
         </div>
       </ion-list>
