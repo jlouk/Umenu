@@ -14,7 +14,7 @@ if(isset($postdata)) {
 	$request = json_decode($postdata);
 	$restaurantId = $request->restaurantId;
 	
-	$qry = "SELECT * FROM `dishes` WHERE `restaurantId` = " . $restaurantId . " LIMIT 15";
+	$qry = "SELECT * FROM `dishes` WHERE `restaurantId` = " . $restaurantId.";";
 	$result = mysqli_query($db,$qry);
 	$count = mysqli_num_rows($result);
 	$arr = array();
