@@ -7,6 +7,7 @@ import { ManagerLoginPage } from '../manager-login/manager-login';
 import { Geolocation } from 'ionic-native';
 import {Observable} from 'rxjs/Rx'; 
 import 'rxjs/add/operator/map';
+import { Injectable } from '@angular/core';
 
 
 @Component({
@@ -67,6 +68,10 @@ postdata: any;
 
   manLogin() {
     this.navCtrl.push(ManagerLoginPage);
+  }
+
+  getRestaurants(){
+    return this.restaurants;
   }
 
   getLocation(){

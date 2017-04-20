@@ -8,6 +8,7 @@ import { ManagerMenuPage } from '../pages/manager-menu/manager-menu';
 import { HomePage } from '../pages/home/home';
 import { ManagerDishDetails } from '../pages/manager-dishdetails/manager-dishdetails';
 import { AuthService } from '../providers/auth-service';
+import { UniversalMenu } from '../providers/universal-menu';
 
 
 @NgModule({
