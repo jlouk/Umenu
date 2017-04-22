@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { ItemDetailsPage } from '../item-details/item-details';
 import { HomePage } from '../home/home';
 import { Http, Headers, RequestOptions } from '@angular/http';
@@ -22,7 +22,7 @@ lon: any;
 dist: string;
 postdata: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
+  constructor(public navCtrl: NavController, public http: Http) {
     this.restaurants = [];
   }
 

@@ -1,30 +1,52 @@
+import { TestBed, ComponentFixture, async } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { DebugElement } from '@angular/core';
+import { IonicModule, NavController } from 'ionic-angular';
+import { MyApp } from '../../app/app.component';
 import { HelloIonicPage } from './hello-ionic';
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-import { ItemDetailsPage } from '../item-details/item-details';
-import { HomePage } from '../home/home';
-import { Http, Headers, RequestOptions } from '@angular/http';
-import { ManagerLoginPage } from '../manager-login/manager-login';
-import { Geolocation } from 'ionic-native';
-import {Observable} from 'rxjs/Rx'; 
-import 'rxjs/add/operator/map';
-import { Injectable } from '@angular/core';
+import { Helloprovider } from '../../providers/helloprovider';
 
-let helloIonic = null;
+let comp: HelloIonicPage;
+let fixture: ComponentFixture<HelloIonicPage>;
+let de: DebugElement;
+let el: HTMLElement;
 
-describe('Initial array', () => {
+let helloIonic: null;
+
+describe('HelloIonicPage: Opening page', () => {
+
+	beforeEach(async(() => {
+		
+		helloIonic = new HelloIonicPage();	
+
+		TestBed.configureTestingModule({
+			declarations: [MyApp, HelloIonicPage],
+
+			providers: [
+				NavController, Helloprovider
+			],
+
+			imports: [
+				IonicModule.forRoot(MyApp)
+			]
+
+		}).compileComponents();
+	}));
 
 	beforeEach(() => {
-		helloIonic = new HelloIonicPage();
+		fixture = TestBed.createComponent(HelloIonicPage);
+		comp = fixture.componentInstance;
 	});
-		
-	it('should return an array', () => {
-		let result = helloIonic.getRestaurants();
-		expect(Array.isArray(result)).toBeTruthy;
-	});
-	
-	it('should contain Porta Bella', () => {
-		let array = helloIonic.getRestaurants();
-		expect(array).toContain('Porta Bella');
+
+	 afterEach(() => {
+        	fixture.destroy();
+        	comp = null;
+        	de = null;
+       		el = null;
+    	});
+ 
+	it('is created', () => {
+		expect(fixture).toBeTruthy();
+		expect(comp).toBeTruthy();
 	});
 });

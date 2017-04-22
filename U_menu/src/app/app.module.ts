@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { ManagerDishDetails } from '../pages/manager-dishdetails/manager-dishdetails';
 import { AuthService } from '../providers/auth-service';
 import { UniversalMenu } from '../providers/universal-menu';
+import { Helloprovider } from '../providers/helloprovider';
 
 
 @NgModule({
@@ -34,6 +35,6 @@ import { UniversalMenu } from '../providers/universal-menu';
     ManagerDishDetails,
     HomePage
   ],
-  providers: [AuthService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [AuthService, {provide: ErrorHandler, useClass: IonicErrorHandler}, Helloprovider]
 })
 export class AppModule {}
