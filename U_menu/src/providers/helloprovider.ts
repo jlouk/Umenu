@@ -14,6 +14,6 @@ export class Helloprovider {
   restuarants: any;
 
   constructor() {
-  	this.restaurants = ['Porta Bella', 'State Street Brats'];
+  	this.restaurants = ['Porta Bella', 'State Street Brats', 'Chasers Bar and Grill', 'Essen Haus', 'Sunroom Cafe'];
   }
 }

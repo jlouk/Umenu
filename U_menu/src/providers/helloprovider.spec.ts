@@ -30,5 +30,27 @@ describe('Home page: initial array', () => {
 
 	expect(restaurants).toContain("State Street Brats");
     });
+    
+    it('should contain Chasers Bar and Grill', () => {
+    	
+    	let restaurants = helloService.restaurants;
+
+	expect(restaurants).toContain("Chasers Bar and Grill");
+    });
+
+    it('should contain Essen Haus', () => {
+    	
+    	let restaurants = helloService.restaurants;
+
+	expect(restaurants).toContain("Essen Haus");
+    });
+
+    it('should contain Sunroom Cafe', () => {
+    	
+    	let restaurants = helloService.restaurants;
+
+	expect(restaurants).toContain("Sunroom Cafe");
+    });
+
  
 });
