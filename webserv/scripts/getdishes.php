@@ -29,6 +29,8 @@ if(isset($postdata)) {
 		$rowarr['dishName'] = $row['dishName'];
 		$rowarr['description'] = $row['description'];
 		$rowarr['price'] = $row['price'];
+		$rowarr['currRating'] = $row['currRating'];
+		$rowarr['numRatings'] = $row['numRatings'];
 		array_push($arr,$rowarr);
 	}
 	
