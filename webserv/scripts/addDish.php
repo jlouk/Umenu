@@ -19,10 +19,14 @@ $dishName = $_POST['dishName'];
 $description = $_POST['description'];
 $price = $_POST['price'];
 
-$query = "SELECT * FROM `users` WHERE userId = ".$userId.";";
+if ($price == NULL or $price==''){
+    echo "error";
+}
+
+$query = "SELECT * FROM `users` WHERE userId = " . $userId . ";";
 $result = mysqli_query($db, $query);
 $user = mysqli_fetch_assoc($result);
-if ($user['manager']){
+if ($user['manager']) {
     $query = "INSERT INTO dishes (categoryId, restaurantId, dishName, description, price) VALUES ($categoryId, $restaurantId, $dishName, $description, $price);";
     mysqli_query($db, $query);
 }
