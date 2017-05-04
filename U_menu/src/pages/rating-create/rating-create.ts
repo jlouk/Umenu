@@ -20,7 +20,7 @@ export class RatingCreatePage {
   }
 
   submitRating() {
-    let body   : string  = JSON.stringify("{dishId: selectedDish.dishId, rating: 4}"),
+    let body   : string  = JSON.stringify("{dishId:" + this.selectedDish.dishId + ", rating: 4}"),
         type   : string  = "application/x-www-form-urlencoded; charset=UTF-8",
         headers: any     = new Headers({ 'Content-Type':'application/json'}),
         options: any     = new RequestOptions({ headers: headers }),
