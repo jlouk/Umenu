@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle *ngIf="!selectedRestaurant">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{selectedRestaurant.restaurantName}}<ion-icon name="beer"></ion-icon></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div style="text-align: center;">
+    <h2> Rate your {{selectedDish.dishName}} out of 5 stars: </h2>
+    <button ion-button color="default" full (click)="submitRating()">Submit Rating</button>
+  </div>
+</ion-content>
