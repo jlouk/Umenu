@@ -35,6 +35,9 @@ export class RatingCreatePage {
     .subscribe(data =>
     {
       console.log(data);
+      if (data.valid == 1) {
+        this.navCtrl.pop();
+      }
     });
   }
 
