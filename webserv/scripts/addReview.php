@@ -30,6 +30,10 @@ if ($item){
     $average = ($rating + $item['rating']) / $numRatings;
     $sql = "UPDATE dishes SET rating = $average WHERE dishId = $dishId;";
     mysqli_query($db,$sql);
+    echo "1";
+}
+else {
+    echo "0";
 }
 
 ?>
