@@ -8,6 +8,7 @@ import { ManagerMenuPage } from '../pages/manager-menu/manager-menu';
 import { HomePage } from '../pages/home/home';
 import { ManagerDishDetails } from '../pages/manager-dishdetails/manager-dishdetails';
 import { AuthService } from '../providers/auth-service';
+import { RatingCreatePage } from '../pages/rating-create/rating-create';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { AuthService } from '../providers/auth-service';
     ManagerLoginPage,
     ManagerMenuPage,
     ManagerDishDetails,
-    HomePage
+    HomePage,
+    RatingCreatePage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -31,7 +33,8 @@ import { AuthService } from '../providers/auth-service';
     ManagerLoginPage,
     ManagerMenuPage,
     ManagerDishDetails,
-    HomePage
+    HomePage,
+    RatingCreatePage
   ],
   providers: [AuthService, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

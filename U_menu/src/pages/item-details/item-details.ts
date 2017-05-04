@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
+import { RatingCreatePage } from '../rating-create/rating-create'
 
 
 
@@ -106,7 +107,10 @@ export class ItemDetailsPage {
      }
    }
 
-   addRating() {
-     
+   addRating(dish) {
+     this.navCtrl.push(RatingCreatePage, {
+      dish: dish,
+      selectedRestaurant: this.selectedRestaurant
+     });
    }
 }
