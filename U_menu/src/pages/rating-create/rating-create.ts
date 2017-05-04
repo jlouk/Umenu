@@ -19,10 +19,11 @@ export class RatingCreatePage {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedDish = navParams.get('dish');
     this.selectedRestaurant = navParams.get('selectedRestaurant');
+    this.numStars = 0;
   }
 
   submitRating() {
-    this.postdata = {dishId: this.selectedDish.dishId, rating: 4};
+    this.postdata = {dishId: this.selectedDish.dishId, rating: this.numStars};
     let body   : string  = JSON.stringify(this.postdata),
         type   : string  = "application/x-www-form-urlencoded; charset=UTF-8",
         headers: any     = new Headers({ 'Content-Type':'application/json'}),

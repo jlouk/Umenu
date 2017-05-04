@@ -11,19 +11,19 @@
   <div style="text-align: center;">
     <h2> Rate your {{selectedDish.dishName}} out of 5 stars: </h2>
   </div>
-  <!--
-  <ion-icon name="star" large (click)="assignValue(1)"></ion-icon>
-  <ion-icon name="star-outline" large (click)="assignValue(1)"></ion-icon>
-  <ion-icon name="star" large (click)="assignValue(2)"></ion-icon>
-  <ion-icon name="star-outline" large (click)="assignValue(2)"></ion-icon>
-  <ion-icon name="star" large (click)="assignValue(3)"></ion-icon>
-  <ion-icon name="star-outline" large (click)="assignValue(3)"></ion-icon>
-  <ion-icon name="star" large (click)="assignValue(4)"></ion-icon>
-  <ion-icon name="star-outline" large (click)="assignValue(4)"></ion-icon>
-  <ion-icon name="star" large (click)="assignValue(5)"></ion-icon>
-  <ion-icon name="star-outline" large (click)="assignValue(5)"></ion-icon>
-  -->
+  <ion-title style="text-align: center; padding-bottom: 30px; padding-top: 30px;">
+    <ion-icon name="star" large (click)="assignValue(1)" *ngIf="numStars>=1"></ion-icon>
+    <ion-icon name="star-outline" large (click)="assignValue(1)" *ngIf="numStars<1"></ion-icon>
+    <ion-icon name="star" large (click)="assignValue(2)" *ngIf="numStars>=2"></ion-icon>
+    <ion-icon name="star-outline" large (click)="assignValue(2)" *ngIf="numStars<2"></ion-icon>
+    <ion-icon name="star" large (click)="assignValue(3)" *ngIf="numStars>=3"></ion-icon>
+    <ion-icon name="star-outline" large (click)="assignValue(3)" *ngIf="numStars<3"></ion-icon>
+    <ion-icon name="star" large (click)="assignValue(4)" *ngIf="numStars>=4"></ion-icon>
+    <ion-icon name="star-outline" large (click)="assignValue(4)" *ngIf="numStars<4"></ion-icon>
+    <ion-icon name="star" large (click)="assignValue(5)" *ngIf="numStars>=5"></ion-icon>
+    <ion-icon name="star-outline" large (click)="assignValue(5)" *ngIf="numStars<5"></ion-icon>
+  </ion-title>
   <div style="text-align: center;">
-    <button ion-button color="default" full (click)="submitRating()">Submit Rating</button>
+    <button ion-button color="default" (click)="submitRating()">Submit Rating</button>
   </div>
 </ion-content>
