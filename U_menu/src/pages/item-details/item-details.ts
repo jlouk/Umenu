@@ -11,8 +11,8 @@ import { RatingCreatePage } from '../rating-create/rating-create'
 })
 export class ItemDetailsPage {
   selectedRestaurant: any;
-  dishes: Array<{categoryId: any, description: any, dishId: any, dishName: any, price: any,
-                 restaurantId: any, numRatings: any, curRating: any, display: boolean}>;
+  dishes: Array<{categoryId: any, description: any, dishId: any, dishName: any, price: number,
+                 restaurantId: any, numRatings: any, rating: number, display: boolean}>;
   categories: Array<{categoryId: any, categoryName: any, restaurantId: any, display: boolean}>;
   dataString: any;
   hasError: boolean;
@@ -80,8 +80,8 @@ export class ItemDetailsPage {
            this.dishes = JSON.parse(this.dataString._body);
            console.log(this.dishes);
            for (let dish of this.dishes) {
-             if (dish.curRating == null) {
-               dish.curRating = 0;
+             if (dish.rating == null) {
+               dish.rating = 0;
              }
              dish.display = false;
            }
